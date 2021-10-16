@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-
-// import { IoIosAdd } from "react-icons/io";
+import AddIcon from "@mui/icons-material/Add";
 
 function CreateArea({ onAdd }) {
   const [isExpanded, setExpanded] = useState(false);
-
   const [note, setNote] = useState({
     title: "",
     content: "",
@@ -19,42 +17,46 @@ function CreateArea({ onAdd }) {
       };
     });
   }
+
   function handleExpanded() {
     setExpanded(true);
   }
 
-  function submitButton(event) {
+  function submitButton(e) {
     onAdd(note);
     setNote({
       title: "",
       content: "",
     });
-    event.preventDefault();
+    e.preventDefault();
   }
 
+  console.log(note);
   return (
     <div>
       <form>
         {isExpanded && (
           <input
-            value={note.title}
             type="text"
+            value={note.title}
+            onChange={handleChange}
             placeholder="Title"
             name="title"
-            onChange={handleChange}
           />
         )}
         <p>
           <textarea
             value={note.content}
             onClick={handleExpanded}
-            name="content"
-            placeholder="Take a note..."
             onChange={handleChange}
             rows={isExpanded ? 3 : 1}
+            name="content"
+            placeholder="Write your note here.."
           ></textarea>
         </p>
-        <button onClick={submitButton}>{/* <IoIosAdd size={35} /> */}+</button>
+        <button onClick={submitButton}>
+          <AddIcon />
+        </button>
       </form>
     </div>
   );

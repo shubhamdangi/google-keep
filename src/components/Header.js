@@ -9,8 +9,7 @@ function Header() {
   );
   return (
     <div className="header">
-      {logo}
-      <h1>Keep</h1>
+      {logo} <h1>Keep</h1>
     </div>
   );
 }

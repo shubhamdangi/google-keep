@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import "./styles.css";
 import Header from "./components/Header";
+import "./style.css";
+import Count from "./components/Count";
 import CreateArea from "./components/CreateArea";
 import Note from "./components/Note";
-import Count from "./components/Count";
 import Footer from "./components/Footer";
 
 function App(props) {
   const [notes, setNotes] = useState([]);
 
   function addNote(newNote) {
-    setNotes((prevValue) => {
-      return [...prevValue, newNote];
+    setNotes((preValue) => {
+      return [...preValue, newNote];
     });
   }
 
@@ -20,6 +20,7 @@ function App(props) {
       return [...preValue.filter((note, index) => index !== id)];
     });
   }
+
   return (
     <div className="App">
       <Header />
